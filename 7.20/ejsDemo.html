@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src=""></script>
+    <script type="text/javascript">
+        var data = {flag:false,
+                    data1:["======1","======2","======3"],
+                    data2:["======4","======5","======6"]
+        };
+
+
+        window.onload = function() {
+          var temolate = document.getElementById("template").innerHTML;
+          alert(temolate);
+          var html = ejs.render(template,data);
+          document.getElementsByTagName("body")[0].innerHTML = html;
+        }
+
+    </script>
+</head>
+<body>
+    <script id="template" type="text/template">
+        <ul>
+            <&if(flag){%>
+            <%for(var i=0;i<datal.length;i++){%>
+            <li><%=data1[i]%></li>
+            <%}>
+
+            <%}else{%>
+            <%for(var i=0;i<data2.length;i++){%>
+            <li><%=data2[i]%></li>
+            <%}%>
+        </ul>
+    </script>
+
+</body>
+</html>

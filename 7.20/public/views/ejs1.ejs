@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这是ejs1的示例</title>
+    <link type="text/css" href="/css/comment.css" rel="stylesheet"/>
+</head>
+    <body>
+    <div id="container">
+        <% include header.ejs %>
+        <div id="main">
+            <h1>过滤器使用，语法：&lt;%=:&nbsp;express&nbsp;%gt;</h1>
+            <ul>
+                <li class="title">数值操作plus(+) minus(-) times(*) divdivded_byded(/),操作数为5</li>
+                <li>原始值:<%=: templateObj.data.age%></li>
+                <li>plus:n----><$=: templateObj.data.age | plus:5%</li>
+                <li>minus:n----><%=: templateObj.data.age | minus:5%></li>
+                <li>times:n----><%=: templateObj.data.age | times:5%></li>
+                <li>divided_by:n----><%=: templateObj.data.age | divided_by:5%></li>
+
+                <li class="tetle">字符串操作</li>
+                <li>原始值:<%=templateObj.str%></li>
+
+                <li>capitalize(首字母大写)----><%=:templateObj.str | capitalize %></li>
+                <li>size(返回字符串长度)----><%= templateObj.str | size %></li>
+                <li>truncate:n(返回前面7个字符串)----><%= templateObj | truncate : 7 %></li>
+                <li>truncate_word:n(返回前面3个单词)----><%= templateObj | truncate_word : 3 %></li>
+                <li>replace:pattern,substitution(将ejs替换为express）----><%=: templateObj.str | replace:'ejs','express' %></li>
+                <li>prepend:val(将<%=temolateObj.str%>前面加上'你好')----><%=: templateObj.str | prepend:'你好' %></li>
+
+            </ul>
+        </div>
+    </div>
+    </body>
+</html>
