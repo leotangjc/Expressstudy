@@ -28,8 +28,38 @@
                 <li>replace:pattern,substitution(将ejs替换为express）----><%=: templateObj.str | replace:'ejs','express' %></li>
                 <li>prepend:val(将<%=temolateObj.str%>前面加上'你好')----><%=: templateObj.str | prepend:'你好' %></li>
 
+
+                <li class="title">数组操作</li>
+                <li>原始值:<%='['+templateObj.array+']'%></li>
+                <li>first(取出数组中的第一个)----><%=: templateObj.array | first %></li>
+                <li>last(取出数组中的最后一个)----><%=: temp;lateObj.array | last %></li>
+                <li>reverse(对数组中的元素逆序)----><%=:templateObj.array | reverse %></li>
+                <li>sort(对数组进行排序)----><%=: templateObj.array | sort%></li>
+                <li>size(返回数组的长度)----><%=: templateObj.array | size%></li>
+                <li>join:'val'(将数组用==链接成字符串)----><%= templateObj.array | join:'=='%></li>
+
+                <li class="title">对象操作</li>
+                <li>
+                    原始值
+                    <%=:templateObj.data
+                     | json
+                     | replace:'"name"','name'
+                     | replace:'"age"','age'
+                     | replace:'"phone"','phone'
+                    %>
+                </li>
+                <li>json(将js对象转换为json字符串)----><%=: templateObj.data | json %></li>
+                <li>get:'prop'(获取对象中name属性的值)----><%=: templateObj.data | get:'name'%></li>
+                <li>map:'prop'(将对象中price属性的值组成数组)----><%=: templateObj.obArray | map:'price'%></li>
+                <li>sort_by:'prop'(按照对象中name属性对源对象组排序)----><%=:templateObj.obArray | sort_by:'price | json'%></li>
+
+                <li class="title">过滤器链式调用</li>
+                //用分隔符分开函数名即可
+                <li>(对年龄plus(4)|times(2))----><%=: templateObj.data.age | plus:4 | times:2%%></li>
+                <li>(将数组第一个元素取出来首字母大写再逆序)----><%=: templateObj.array | first | capitalize | reverse%></li>
             </ul>
         </div>
+        <% include footer.ejs%>
     </div>
     </body>
 </html>
